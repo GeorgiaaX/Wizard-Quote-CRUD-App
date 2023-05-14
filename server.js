@@ -4,7 +4,7 @@ const app = express()
 const cors = require('cors')
 const MongoClient = require('mongodb').MongoClient
 const connectionString = 'mongodb+srv://GeorgiaaX:RainbowUnicorn@cluster0.xkuvitn.mongodb.net/?retryWrites=true&w=majority'
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
 
   
@@ -71,7 +71,7 @@ MongoClient.connect(connectionString, (err, client) => { useUnifiedTopology: tru
             .catch(error => console.error(error))
         })
 
-        app.listen(process.env.PORT || PORT, () => {
+        app.listen(process.env.PORT, () => {
             console.log(`Server running on port ${PORT}`)
         })
  
