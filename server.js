@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
+const cors = require('cors')
 const MongoClient = require('mongodb').MongoClient
 const connectionString = 'mongodb+srv://GeorgiaaX:RainbowUnicorn@cluster0.xkuvitn.mongodb.net/?retryWrites=true&w=majority'
 const PORT = 3000
@@ -14,7 +15,7 @@ MongoClient.connect(connectionString, (err, client) => { useUnifiedTopology: tru
         const quotesCollection = db.collection('quotes')
 
         app.set('view engine', 'ejs')
-
+        app.use(cors())
         app.use(bodyParser.urlencoded({ extended: true }))
         app.use(express.static('public'))
         app.use(bodyParser.json())
